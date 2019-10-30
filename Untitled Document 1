@@ -1,0 +1,38 @@
+#Manual Git 
+notas  
+log = timeline (relação de instalaçõe, em índices, e o final em head(ultima versão))
+sudo= poder de adm 
+logicat  do git 
+	git rastreia qualquer artefato de software 
+
+".arquivo" : deixa o arquivo oculto 
+
+Ajuda a resolver conflitos de ver crisndo listas dr conflitos entre as versões 
+
+
+
+Metodologia 
+Passo 1: 
+	Criando o workspace
+		mkdir "Nome do arquivo"
+		cd "Noe do arquivo"
+Passo 2: 
+	"Quando utiliza . no terminal significa que inicializar aqui."
+ 	"Branch(ramo) = timeline princiopal "	
+	ls -la(mostrar arquivos)
+	ide ??? (ambiente integral de desenvolvimento)
+
+	git add -A(faz com que todos meus arquivbos no workspace estão como indices(protocolo)) 
+	git rm --cached <filed > para retirar a ultima versão 
+
+	git commit -m = Mandar para o hard (ultimo arquivo)
+		Boa pratica: "Adicionar a "arquivo" dentro de "
+
+	git status = mostra caracteristicas do arquivo 
+	git config --global user.name "Meu Nome" 
+		--global se refere a operações que salvam na memoria princiapal 
+
+	git log = mostra todas alteraçẽos 
+
+
+

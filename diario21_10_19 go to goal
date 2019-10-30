@@ -1,0 +1,20 @@
+diario de estudo 21/10/19
+
+Para Hoje 
+go to goal 
+início: 6:14
+término: 
+
+
+Relatório: 
+Exercício: 
+Aprender como fazer um algoritmo funcionar no Ros e saber como simular o mesmo 
+Entender o codigo em Python e descrever a estrutura do código
+
+Passo - a - Passo 
+1) No wiki do ros.org copiar o codigo "Go to GOal"
+2) criar um package para essa aplicação - check
+3) Permitir o código 
+4} executar o codigo 
+source devel/setup.bash
+

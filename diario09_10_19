@@ -1,0 +1,53 @@
+diario de estudo 09/10/19
+
+Para Hoje 
+Ros Service
+
+
+Relatório
+Coneito de sevice e cliente : 
+	Ros service é antes de mais nada um ponto onde o codigo pode pedir informações ou enviar informações 
+
+Para que serve ? 
+	Serve para enviar ou receber informações curtas e unica. Diferentemente dos topicos que estão publicando os se inscrevendo em uma cadência maior 
+
+
+
+Procedimetos para consultar os Services no Ros: 
+
+1. rosservice list : 
+	Quando um nó estiver aberto , por exemplo o  turtlesim_node, 
+irá aparecer a lista de serviços disponíveis 
+
+2. rossrv info/serviço"
+	Esse comando mostrará os tipos de mensagens com que o "serviço" específico se comunica. 
+	Por exemplo:rossrv info turtlesim/Spawn 
+	float32 x
+	float32 y
+	float32 theta
+	string name
+	---
+	string name
+3. rosservice call /"serviceespecífico" mesagem 1 mensagem 2 mensagemn
+	Esse comando é  responsável por executar o seviço, por exemplo . para add uma nova tartaruga no  turtlesim_node: 
+
+	rosservice call /spawn 1 1 0 "Bruno" 
+
+ou seja eu especifiquei as coordennova tartaruga irá ficar e qual o nome dela. 
+
+
+
+
+Procedimento para criar um Service-client
+
+Lembre que o cliente manda inputs para o service e esse compunta e devolve para o cliente em forma de outputs agora processados. 
+
+
+
+
+
+
+
+
+
+

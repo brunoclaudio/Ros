@@ -1,0 +1,54 @@
+diario de estudo 17/10/19
+
+Para Hoje 
+Ros Service - exercício.
+início: 9:40
+término: 11:32
+
+
+Relatório: 
+Exercício: 
+Criar um service que calcule a área de um retângulo. Para isso crie um client que envie dois reais largura e comprimento.
+
+Check list: 
+1)criar um package chamado ros_service_assigment
+2)difina a mensage do service()service file)
+3)Crie  a ROS server node 
+4)Crie  Ros client node
+5)execute o service 
+6) execute a função com o client (enviar os inputs)
+
+
+Para isso: 
+1) Criando o package e defina a mensagem do service. 
+		1.1 crie a pasta exemplo "srv"
+		1.2 no cmd vá para src e catkin_create_pkg "srv" rospy
+		1.3 crie um arquivo addtwoint.srv para definir as 			variáveis 
+			exemplo:	
+			int64 a #variável inteira qualquer 
+			int64 b
+  			...
+			int64 sun
+2)compile 
+agora é necessário definir no package o tipo de mensagem no nosso caso teremos que add: 
+<build_depend>message_generation</build_depend>
+
+e
+<exec_depend>message_runtime</exec_depend>		
+
+
+tambem é mecessário especificar no cmakelist que existe "message_generation" em ## Find catkin macros and libraries e especificar seu arquivo "Addtwoint.srv" em ""generate sistem file "
+
+feito isso, vá ao cmd e coloque na pasta de
+
+
+
+
+
+
+
+
+ Nota 
+Em erro encontrado foi: compilar as mundanças do cmakelist, package. 
+
+

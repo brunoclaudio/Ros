@@ -1,0 +1,66 @@
+diario de estudo 25/10/19
+
+Para Hoje 
+Entender sobre Networkinq configuration 
+
+Qual o objetivo: 
+
+Controlar um robo utilizando internet. 
+1) in your robot machine and server machine open 
+	gedit .bashrc  
+2) in robot machine configuration copy the url  
+e especificar o rost name   
+
+
+Não ficou claro como faço essa comunicação mas por alto vi que preciso da identificação da máquina que o robo utiliza. 
+
+
+
+
+
+Mutiplos nós com roslauche.
+
+1) é o lugar onde fica os nós, os par ametros desses nós e pastas do ros 
+
+
+por que usar ros lauch??
+porque você consegue rodar muitos nós ao mesmo tempo com menos linhas de códigos. 
+Por exemplo: 
+
+Vamos abrir o nó turtlesim_node que mostra ajanela gráfica da tartaruga e tem como pakage  turtlesim e tambem o nó teleop_key do mesmo pkg. 
+
+Para isso vamos criar um escrip com o seguinte padrão. 
+
+<launch>
+	<node pkg= "nome do pkg" type="nome do nó " neme="crie um novonome para o nó" />
+
+#faça isso para todos os nós que queira abrir
+
+</launch>
+
+
+
+Agora vamos inicializar a launch 
+em um cmd faça: 
+roslaunch NOME_DO_FILE_ONDE_SALVOU_O_SCRIPT  NOME_DO_SCRIPT 
+
+ 
+Você também pode add parametros na launch 
+
+Por exemplo você tem um alvo no código "go_to_goal.py" e lá é necessário especificar x e y. Mas agora com a launch fica mais fácil,basta: 
+		'lembre de certificar que o código está esperando x e y
+			no código :
+			x = rospy.get_param("x")
+add na launch:
+
+<param name= "x" value="30"/>
+<param name= "y" value="30"/>
+
+
+
+fim
+
+
+
+
+

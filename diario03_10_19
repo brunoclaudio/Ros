@@ -1,0 +1,46 @@
+Diário de Estudo 03_10_19
+
+"No dia anterior ive problema em entender os passos-a-passos para inicializar, estruturar e operar o código
+	Dentre estas a principal dificuldade foi enetender a estrutura do codigo, logo devo dar um passo à trás e revisar alguns conceitos de objetos,classes,métodos, funções...
+	A segunda mais abstrata, até o momento, é saber se realmente estou fazendo o procedimento certo, e procedimento quero me referir a metodologia para rodar o código que criei" 
+
+
+"PARA HOJE
+
+- Assistir um vídeo de exemplo de código: #check# 
+<https://www.youtube.com/watch?v=4Lifb9Cg_9w>
+
+########################Pratica:############################### 
+Duvidadas: 
+	- A função callback é a função que 'guarda meus valores'?   
+- revisar os conceitos python na dsacademy  
+"
+
+################################################################
+
+Relatório: 
+
+O que foi aprendido ? 
+	1) inicializar e executar um código
+
+Como fazer isso? 
+
+	1) em um novo terminal faça: 
+		roscore     		# nicializa o nó master 
+
+	2) em um novo terminal faça: 
+
+		rosrun turtlesim turtlesim_node  #inicializa a "tela 			da tartaruga"
+
+	3) em um novo terminal faça: 
+		3.1) vá para pasta raiz, faça: 
+			cd ~/"sua pasta" 
+		3.2) tenha certeza que você originou sua área de 			trabalho 
+		source ./devel/setup.bash 
+		3.3) verifique se você deu permissão para executar o 			programa com adm 
+			pode ser feito em: botão direito ---> 				permissão---> dar permissão
+
+			ou chmod u+x ~/"pasta raiz"/src/"pasta com 				package"/src/move.py
+
+	4) por fim execute seu codigo 
+		rosrun "pasta com package" "seu codigpo".py

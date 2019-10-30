@@ -1,0 +1,93 @@
+diario de estudo 24/10/19
+
+Para Hoje 
+Criar uma algotimo para apenas apontar a tartaruga  
+início: 9:00
+término: 11:00
+
+
+Relatório: 
+Exercício: 
+Aprender como fazer um algoritmo funcionar no Ros e saber como simular o mesmo 
+Entender o codigo em Python e descrever a estrutura do código
+
+Passo - a - Passo 
+CODIGO:
+
+
+#!/usr/bin/env python			sempre inicialize  o código com isso para ros entrender que é uma função para o mesmo
+#!/usr/bin/env python
+import rospy				Import a biblioteca 
+from geometry_msgs.msg import Twist	O tópico cmd_vel tem uma tipo de mensagem "geometry_msgs.msg" e dela import a Twist 
+from turtlesim.msg import Pose	 	De forma semelhante importe o conjunto de mensagem Pose
+from math import pow, atan2, sqrt  	"Math" é uma classe dentro do python para funções comuns da matemáticas como potenciação(pow).
+
+class TurtleBot: 			Para class turtlebot 					
+    def __init__(self):									Função para iniciar o algoritmo:
+        # Creates a node with name 'turtlebot_controller' and make sure it is a
+        # unique node (using anonymous=True).
+        rospy.init_node('move', anonymous=True)						Está especificando que iniciará o nó que guardamos os 											algoritmos "move" e que essa função será anonima
+
+        # publicará no tópico '/turtle1/cmd_vel'.              
+        self.velocity_publisher = rospy.Publisher('/turtle1/cmd_vel',
+                                                  Twist, queue_size=10)
+
+        # subscreverá no tópico'/turtle1/pose'. self.update_pose is called
+        self.pose_subscriber = rospy.Subscriber('/turtle1/pose',
+                                                Pose, self.update_pose) 
+
+        self.pose = Pose()							Aqui estou defindo queminha variavel "pose" recebe os valores 		self.rate = rospy.Rate(10)						da mensagem do tipo "Pose"
+
+    def update_pose(self, data):
+								
+        #received by the subscriber."""
+        self.pose = data							"Data" especifica que pose é do tipo de variável (x,y)
+        self.pose.x = round(self.pose.x, 4)					Aqui coloca as variáveis com 4 casas decimáis depois da vírgula
+        self.pose.y = round(self.pose.y, 4)
+
+    def steering_angle(self, goal_pose):					Aqui crio uma função para calcular o angulo que o bot irá 
+        #"""See video: https://www.youtube.com/watch?v=Qh15Nol5htM."""		apontar
+        return atan2(goal_pose.y - self.pose.y, goal_pose.x - self.pose.x)
+
+    def angular_vel(self, goal_pose, constant=6):
+        #"""See video: https://www.youtube.com/watch?v=Qh15Nol5htM."""
+        return constant * (self.steering_angle(goal_pose) - self.pose.theta)	já aqui coloca a velocidade que ele irá fazer o movimento
+
+    def move2goal(self):
+        #"""Moves the turtle to the goal."""
+        goal_pose = Pose()							Aqui defino que "goal_pose" é do tipo "Pose"
+
+        # Get the input from the user.
+        goal_pose.x = input("Set your x goal: ")				Usuário é solicitado a entrar com o alvo
+        goal_pose.y = input("Set your y goal: ")
+
+        # Please, insert a number slightly greater than 0 (e.g. 0.01).
+        angular_tolerance = input("Set your tolerance: ")
+
+        vel_msg = Twist()							Defino que vel_msg é do tipo Twist()
+
+        while self.steering_angle >= angular_tolerance:				minha condição é que enquanto meu angulo alvo for maior que o 											meu angulo de tolerância ele fará a velocidade angular em z ser
+										igual á "self.angular_vel(goal_pose)"
+
+            # Angular velocity in the z-axis.
+            vel_msg.angular.x = 0
+            vel_msg.angular.y = 0
+            vel_msg.angular.z = self.angular_vel(goal_pose)
+
+            # Publishing our vel_msg						Então publico vel_msg
+            self.velocity_publisher.publish(vel_msg)
+
+            # Publish at the desired rate.
+            self.rate.sleep()							a uma taxa padrão
+
+        vel_msg.angular.z = 0							quando a tolerância for maior mando parar
+        self.velocity_publisher.publish(vel_msg)
+
+        # If we press control + C, the node will stop.
+        rospy.spin()
+if __name__ == '__main__':			
+    try:
+        the = TurtleBot()
+        the.move2goal()
+    except rospy.ROSInterruptException:
+        pass #bloco  vazio
